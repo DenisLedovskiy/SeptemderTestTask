@@ -15,9 +15,30 @@ class AppCoordinator {
     func start() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.overrideUserInterfaceStyle = .light
-//        let module = MainBuilder.buildMainScreen()
-        let module = ViewController()
+        mainScene()
+    }
+
+    func mainScene() {
+        let module = configureTabBarController()
         window?.rootViewController = module
         window?.makeKeyAndVisible()
+    }
+}
+
+extension AppCoordinator {
+    func configureTabBarController() -> UITabBarController {
+        let tabBarController = BaseTabBarController()
+        tabBarController.viewControllers = [createVC(MainBuilder.buildMainScreen(), title: "Главная",
+                                                     icon: Design.Image.book),
+                                            createVC(ViewController(), title: "Факты", icon: Design.Image.fact),
+                                            createVC(ViewController(), title: "Google", icon: Design.Image.web)]
+        return tabBarController
+    }
+
+    func createVC(_ vc: UIViewController, title: String, icon: UIImage?) -> UIViewController {
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.tabBarItem.title = title
+        navigationController.tabBarItem.image = icon
+        return navigationController
     }
 }
