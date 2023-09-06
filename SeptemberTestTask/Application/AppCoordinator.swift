@@ -11,17 +11,30 @@ import UIKit
 class AppCoordinator {
 
     var window: UIWindow?
+    private var isGoogleMode = UserSettings.isGoogleMode
 
     func start() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.overrideUserInterfaceStyle = .light
-        mainScene()
+        isGoogleMode == true ? makeGoogleScene() : makeMainScene()
     }
 
-    func mainScene() {
+    func makeMainScene() {
         let module = configureTabBarController()
         window?.rootViewController = module
         window?.makeKeyAndVisible()
+    }
+
+    func makeGoogleScene() {
+        let module = GoogleBuilder.buildGoogleScreen()
+        window?.rootViewController = module
+        window?.makeKeyAndVisible()
+    }
+
+    func moveGoogleScene() {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.overrideUserInterfaceStyle = .light
+        makeGoogleScene()
     }
 }
 
@@ -30,8 +43,8 @@ extension AppCoordinator {
         let tabBarController = BaseTabBarController()
         tabBarController.viewControllers = [createVC(MainBuilder.buildMainScreen(), title: "Главная",
                                                      icon: Design.Image.book),
-                                            createVC(ViewController(), title: "Факты", icon: Design.Image.fact),
-                                            createVC(ViewController(), title: "Google", icon: Design.Image.web)]
+                                            createVC(FactsBuilder.buildFactsScreen(), title: "Факты", icon: Design.Image.fact),
+                                            createVC(OneButtonBuilder.buildOneButtoneScreen(), title: "Google", icon: Design.Image.web)]
         return tabBarController
     }
 

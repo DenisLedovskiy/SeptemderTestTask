@@ -2,6 +2,6 @@ import Foundation
 
 protocol AbstractErrorParser {
 
-    func parse(_ result: Error) -> Error
+    func parse(statusCode: Int) -> APIError
     func parse(response: HTTPURLResponse?, data: Data?, error: Error?) -> Error?
 }

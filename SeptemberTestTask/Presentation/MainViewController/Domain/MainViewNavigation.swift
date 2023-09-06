@@ -1,8 +1,6 @@
 import UIKit
 
-protocol MainNavigator {
-
-}
+protocol MainNavigator {}
 
 final class MainNavigation {
 
@@ -13,6 +11,4 @@ final class MainNavigation {
     }
 }
 
-extension MainNavigation: MainNavigator {
-
-}
+extension MainNavigation: MainNavigator {}

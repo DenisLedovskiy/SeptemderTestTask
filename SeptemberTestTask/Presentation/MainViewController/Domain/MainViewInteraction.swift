@@ -17,7 +17,6 @@ final class MainInteraction {
         self.presenter = presenter
         self.dataSource = Store.viewContext.dataSource
     }
-    
 }
 
 extension MainInteraction {
@@ -27,7 +26,7 @@ extension MainInteraction {
             switch result {
             case .fail(let error): print("Error: ", error)
                 self.generator.notificationOccurred(.error)
-            case .success: print("Succes fetch")
+            case .success:
                 guard let data = dataSource?.getAllItems() else {return}
                 presenter?.setContent(data)
             }
@@ -40,7 +39,7 @@ extension MainInteraction {
             switch result {
             case .fail(let error): print("Error: ", error)
                 self.generator.notificationOccurred(.error)
-            case .success: print("Success add product")
+            case .success:
                 self.generator.notificationOccurred(.success)
                 self.fetch()
             }

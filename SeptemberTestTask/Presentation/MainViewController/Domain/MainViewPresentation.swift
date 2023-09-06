@@ -13,10 +13,7 @@ final class MainPresentation {
     }
 }
 
-extension MainPresentation {
-
-}
-
+extension MainPresentation {}
 
 extension MainPresentation: MainPresenter {
     func setContent(_ data: [String]) {

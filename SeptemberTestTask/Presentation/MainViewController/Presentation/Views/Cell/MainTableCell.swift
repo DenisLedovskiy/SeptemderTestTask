@@ -32,11 +32,7 @@ extension MainTableCell {
             make.top.equalToSuperview().offset(10)
             make.left.right.equalToSuperview().inset(16)
         }
-
-//        if let lastSubview = self.contentView.subviews.last {
-//        //            self.contentView.bottomAnchor.constraint(equalTo: lastSubview.bottomAnchor, constant: 10).isActive = true
-//        //        }
-
+        
         self.contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
     }
 }

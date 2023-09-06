@@ -1,9 +1,6 @@
 import UIKit
 
-
-protocol MainViewDelegate: AnyObject {
-
-}
+protocol MainViewDelegate: AnyObject {}
 
 class MainView: UIView {
 
@@ -130,10 +127,7 @@ extension MainView {
 }
 
 //MARK: - UITableViewDelegate
-extension MainView: UITableViewDelegate {
-    
-}
-
+extension MainView: UITableViewDelegate {}
 
 //MARK: - TapGesture
 extension MainView {

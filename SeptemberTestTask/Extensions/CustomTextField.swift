@@ -43,6 +43,7 @@ class CustomTextField: UITextField {
         layer.borderWidth = 2
         layer.borderColor = Design.Color.black.cgColor
         layer.cornerRadius = 10
+        tintColor = Design.Color.black
 
         // MARK: - Add Subviews
 

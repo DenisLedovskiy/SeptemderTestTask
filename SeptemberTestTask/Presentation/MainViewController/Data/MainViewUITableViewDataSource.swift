@@ -15,6 +15,4 @@ class MainViewUITableViewDataSource: NSObject, UITableViewDataSource {
         cell.configure(content[indexPath.row])
         return cell
     }
-
-
 }

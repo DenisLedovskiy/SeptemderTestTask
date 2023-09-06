@@ -12,7 +12,7 @@ enum Design {
 
     enum Image {
         static let book = UIImage(systemName: "character.book.closed")
-        static let fact = UIImage(systemName: "bubble.left.circle")
+        static let fact = UIImage(systemName: "quote.bubble")
         static let web = UIImage(systemName: "globe")
     }
 

@@ -12,7 +12,8 @@ class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
     func serialize(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) throws -> T {
 
         if let error = errorParser.parse(response: response, data: data, error: error) {
-            throw error
+            let customError = errorParser.parse(statusCode: response?.statusCode ?? 0)
+            throw customError
         }
         do {
             let data = try DataResponseSerializer().serialize(request: request,
@@ -21,7 +22,7 @@ class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
             let value = try JSONDecoder().decode(T.self, from: data)
             return value
         } catch {
-            let customError = errorParser.parse(error)
+            let customError = errorParser.parse(statusCode: response?.statusCode ?? 0)
             throw customError
         }
     }
